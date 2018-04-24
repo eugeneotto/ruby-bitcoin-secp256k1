@@ -8,7 +8,7 @@ module Secp256k1
 
     ffi_lib (ENV['LIBSECP256K1'] || 'libsecp256k1')
 
-    Constants = FFI::ConstGenerator.new('Secp256k1', required: true, cppflags: '--sysroot=/app/.apt') do |gen|
+    Constants = FFI::ConstGenerator.new('Secp256k1', required: true, cppflags: ENV['SECP256K1_CPPFLAGS']) do |gen|
       gen.include 'secp256k1.h'
 
       gen.const(:SECP256K1_EC_COMPRESSED)
